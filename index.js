@@ -1,6 +1,10 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose")
+const bodyParser = require('body-parser')
+
+//init express app
+const app = express()
 
 //article model
 
@@ -21,8 +25,12 @@ db.on("error" , (err)=>{
 })
 
 
-//init express app
-const app = express()
+//init bodyparser
+
+app.use( bodyParser.urlencoded({extended:false}))
+
+//parse data to json
+app.use(bodyParser.json())
 
 
 
@@ -49,8 +57,19 @@ app.get('/add/articles' , (req, res)=>{
 })
 
 app.post("/add/articles",(req,res)=>{
-     console.log("submited")
-     return;
+    const article = new Article()
+    article.title= req.body.title
+    article.author= req.body.author
+    article.body = req.body.body
+
+    article.save((err)=>{
+        if(err){
+         console.log(err)
+        }
+        else{
+         res.redirect("/")
+        }
+    })
 })
 
 //views 
