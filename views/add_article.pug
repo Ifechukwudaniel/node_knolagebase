@@ -2,3 +2,14 @@ extends layout
 
 block content 
     h1 #{ title}
+    form(action="/add/articles", method="POST")
+        #form-group
+            label(for="title") Title
+            input.form-control(name="title" type="text")
+        #form-group
+            label(for="author") Author
+            input.form-control(name="author" type="text")
+        #form-group
+            label(for="boby") Body
+            textarea.form-control(name="body" type="text")
+        input.btn.btn-primary(type='submit', value="Submit")

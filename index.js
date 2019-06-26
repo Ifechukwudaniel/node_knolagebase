@@ -48,6 +48,11 @@ app.get('/add/articles' , (req, res)=>{
     })
 })
 
+app.post("/add/articles",(req,res)=>{
+     console.log("submited")
+     return;
+})
+
 //views 
 app.set("views", path.join(__dirname,"views"))
 app.set("view engine", "pug")
