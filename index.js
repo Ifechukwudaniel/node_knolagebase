@@ -34,6 +34,7 @@ app.use(bodyParser.json())
 
 
 
+
 //route for index page
 
 Article.find({},(err, articles)=>{
