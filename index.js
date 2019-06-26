@@ -1,45 +1,54 @@
 const express = require("express");
-const path = require("path")
+const path = require("path");
+const mongoose = require("mongoose")
 
+//article model
 
-const app = express()
+const Article = require("./models/articles")
 
-let articles = [
-    {
-        id:1,
-        title:" article 1",
-        author:"daniel ifechuku",
-        body:"article one "
-    },
-    {
-        id:2,
-        title:" article 2",
-        author:"daniel ifechuku",
-        body:"article two "
-    },
-    {
-        id:3,
-        title:" article 3",
-        author:"daniel ifechuku",
-        body:"article three "
-    }
+//connect to mongo db
+mongoose.connect("mongodb://localhost/Blog")
+const db = mongoose.connection
 
-]
+//check connection
 
-app.get('/' , (req, res)=>{
-    res.render('index', {
-       title: "Article",
-       articles:articles
-    })
+db.once('open',()=>{
+    console.log("Connected to mongo DB")
+})
+
+db.on("error" , (err)=>{
+    console.log( err)
 })
 
 
+//init express app
+const app = express()
+
+
+
+//route for index page
+
+Article.find({},(err, articles)=>{
+    if (err) {
+        console.log(err)
+    } else {
+        app.get('/' , (req, res)=>{
+            res.render('index', {
+               title: "Article",
+               articles:articles
+            })
+        })
+      
+    }
+})
+// add article path
 app.get('/add/articles' , (req, res)=>{
     res.render('add_article', {
        title: "add article"
     })
 })
 
+//views 
 app.set("views", path.join(__dirname,"views"))
 app.set("view engine", "pug")
 
