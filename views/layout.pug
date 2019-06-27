@@ -2,35 +2,30 @@ doctype html
 html
     head
         link(rel="stylesheet", href="/bower_components/bootstrap/dist/css/bootstrap.css")
+        meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
         title  Knowlage base
         body
             nav.navbar.navbar-expand-md.navbar-dark.bg-dark.fixed-top
-                a.navbar-brand(href='#') Navbar
-                button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExampleDefault', aria-controls='navbarsExampleDefault', aria-expanded='false', aria-label='Toggle navigation')
+                a.navbar-brand(href='/') Knolage Base
+                button.navbar-toggler.collapsed(type='button', data-toggle='collapse', data-target='#navbarsExampleDefault', aria-controls='navbarsExampleDefault', aria-expanded='false', aria-label='Toggle navigation')
                     span.navbar-toggler-icon
-                #navbarsExampleDefault.collapse.navbar-collapse
+                #navbarsExampleDefault.navbar-collapse.collapse
                     ul.navbar-nav.mr-auto
-                    li.nav-item.active
-                        a.nav-link(href='#')
-                        | Home 
-                        span.sr-only (current)
-                    li.nav-item
-                        a.nav-link(href='#') Link
-                    li.nav-item
-                        a.nav-link.disabled(href='#', tabindex='-1', aria-disabled='true') Disabled
-                    li.nav-item.dropdown
-                        a#dropdown01.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Dropdown
-                        .dropdown-menu(aria-labelledby='dropdown01')
-                        a.dropdown-item(href='#') Action
-                        a.dropdown-item(href='#') Another action
-                        a.dropdown-item(href='#') Something else here
-                    form.form-inline.my-2.my-lg-0
-                    input.form-control.mr-sm-2(type='text', placeholder='Search', aria-label='Search')
-                    button.btn.btn-secondary.my-2.my-sm-0(type='submit') Search
-
-            block content
+                        li.nav-item.active
+                            a.nav-link(href='/')
+                                | Home 
+                                span.sr-only (current)
+                        li.nav-item
+                            a.nav-link(href='/add/articles') Add Articles
+            
             br
-            hr
-            footer
-            p CopyRight &copy  2019
+            br
+            br
+            .container            
+                block content
+                br
+                hr
+                footer
+                p CopyRight &copy  2019
+            script(src="/bower_components/")
         
